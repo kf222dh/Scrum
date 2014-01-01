@@ -1,0 +1,6 @@
+[Member]
+Kevin Fredriksson
+[MemberID]
+1
+[SSN]
+1

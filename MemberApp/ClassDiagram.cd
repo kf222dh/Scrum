@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="MemberApp.Views.PageView">
+    <Position X="3" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AKQABCAQAAAAAAAAAACAQAAAIEAQAAAgCACAAAAAAAA=</HashCode>
+      <FileName>Views\PageView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MemberApp.Models.MemberCatalog">
+    <Position X="5.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAgIAAAEACIAJAABBAAAAAAAAAAgAAAKAEAAAAAAA=</HashCode>
+      <FileName>Models\MemberCatalog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MemberApp.Models.Member">
+    <Position X="8.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAAAAAAQAAAAAAAQAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Member.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MemberApp.Models.Boat">
+    <Position X="8.25" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAQAAAEAAAAA=</HashCode>
+      <FileName>Models\Boat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MemberApp.Controllers.MasterController">
+    <Position X="0.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>iAAAwAAAAAAAgIAAAAEEAACAAAAAAAAAAAAAAAAgACA=</HashCode>
+      <FileName>Controllers\MasterController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MemberApp.Program">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="MemberApp.Models.RecipeMemberStatus">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAIBAAEAAAAAAAFAgA=</HashCode>
+      <FileName>Models\ReadMemberStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MemberApp.Models.BoatType">
+    <Position X="10.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAABAAAAAAAAAAAABAAABAAAIABAAAAAAAAAA=</HashCode>
+      <FileName>Models\BoatType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
