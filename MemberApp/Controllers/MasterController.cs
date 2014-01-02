@@ -315,7 +315,7 @@ namespace MemberApp.Controllers
 
             // Ersätt befintlig medlem med uppdaterad medlem
             int index = _mc.Members.IndexOf(member);
-            _mc.Members[index] = new Member(name, member.Id, ssn, member.Boats);
+            _mc.Members[index] = new Member(name, member.Id, ssn);
             // Sortera användare
             _mc.Members.Sort();
         }
