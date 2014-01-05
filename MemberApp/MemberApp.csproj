@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\MemberCatalog.cs" />
     <Compile Include="Models\ReadMemberStatus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
