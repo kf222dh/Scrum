@@ -129,5 +129,16 @@ namespace MemberApp.Models
                 }
             }
         }
+
+        public Member GetMember(int id)
+        {
+            for (int i = 0; i < Members.Count(); i++)
+            {
+                if (Members[i].Id == id)
+                    return Members[i];
+            }
+            return null;
+        }
+
     }
 }

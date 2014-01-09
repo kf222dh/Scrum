@@ -17,3 +17,5 @@ C:\Users\Devlin\Documents\GitHub\Scrum\MemberApp\obj\x86\Debug\MemberApp.pdb
 C:\Users\Devlin\Documents\GitHub\Scrum\MemberApp\bin\Debug\MemberApp.exe
 C:\Users\Devlin\Documents\GitHub\Scrum\MemberApp\bin\Debug\MemberApp.pdb
 C:\Users\Devlin\Documents\GitHub\Scrum\MemberApp\obj\x86\Debug\MemberApp.csprojResolveAssemblyReference.cache
+C:\Users\Kevin\Documents\GitHub\Scrum\MemberApp\obj\x86\Debug\MemberApp.exe
+C:\Users\Kevin\Documents\GitHub\Scrum\MemberApp\obj\x86\Debug\MemberApp.pdb
