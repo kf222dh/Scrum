@@ -140,5 +140,17 @@ namespace MemberApp.Models
             return null;
         }
 
+        public int GetNextMemberId()
+        {
+            int highestId = 0;
+
+            foreach (Member member in Members)
+            {
+                if (member.Id > highestId)
+                    highestId = member.Id;
+            }
+            return highestId + 1;
+        }
+
     }
 }
