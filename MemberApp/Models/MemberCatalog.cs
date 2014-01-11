@@ -152,5 +152,14 @@ namespace MemberApp.Models
             return highestId + 1;
         }
 
+        public bool MembersExist()
+        {
+            // Om medlemsregistret inte innehåller några poster.
+            if (Members.Count == 0)
+                return false;
+            else
+                return true;
+        }
+
     }
 }
