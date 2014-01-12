@@ -1,4 +1,10 @@
 [Member]
+Keivn
+[MemberID]
+2
+[SSN]
+123123
+[Member]
 Kevin Fredriksson
 [MemberID]
 1

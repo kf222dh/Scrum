@@ -5,5 +5,5 @@ using System.Text;
 
 namespace MemberApp.Models
 {
-    enum RecipeMemberStatus { Indefinite, Member, MemberID, SSN, BoatType, BoatLength, BoatInfo }
+    enum BoatType { Segelbåt, Motorseglare, Motorbåt, Kajak, Kanot, Övrigt }
 }

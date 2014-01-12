@@ -72,25 +72,25 @@ namespace MemberApp.Controllers
 
                         case 3:
                             #region Lägg till medlem
-                            
+
                             Member memberToCreate = CreateMember();
 
                             if (memberToCreate != null)
-                                SaveMember(memberToCreate);                       
-                            else 
+                                SaveMember(memberToCreate);
+                            else
                                 _pv.ViewMessage("\nFEL! Medlemmen kunde inte skapas\n\n", ConsoleColor.Red);
 
-                            if (!_pv.ContinueOnKeyPressed(true)) 
+                            if (!_pv.ContinueOnKeyPressed(true))
                                 return;
 
                             break;
-                            
+
                             #endregion
 
                         case 4:
                             #region Visa medlem
 
-                            if(_mc.MembersExist())
+                            if (_mc.MembersExist())
                             {
                                 _pv.MemberNameList(_mc.Members);
                                 bool cancel = false;
@@ -124,8 +124,8 @@ namespace MemberApp.Controllers
                                     catch (Exception)
                                     {
                                         _pv.ViewMessage("Du måste ange ett heltal\n", ConsoleColor.Red);
-                                    }  
-                                } 
+                                    }
+                                }
                                 while (cancel == false);
                             }
                             else
@@ -141,13 +141,13 @@ namespace MemberApp.Controllers
                         case 5:
                             #region Ändra medlem
 
-                            if(_mc.MembersExist())
+                            if (_mc.MembersExist())
                             {
                                 // Visa befintliga medlemmar
                                 _pv.MemberNameList(_mc.Members);
-                                
+
                                 bool cancel = false;
-                                
+
                                 do
                                 {
                                     try
@@ -194,7 +194,7 @@ namespace MemberApp.Controllers
                         case 6:
                             #region Ta bort medlem
 
-                            if(_mc.MembersExist())
+                            if (_mc.MembersExist())
                             {
                                 _pv.MemberNameList(_mc.Members);
                                 bool cancel = false;
@@ -228,12 +228,196 @@ namespace MemberApp.Controllers
                                     catch (Exception)
                                     {
                                         _pv.ViewMessage("Du måste ange ett heltal\n", ConsoleColor.Red);
-                                    } 
+                                    }
                                 }
                                 while (cancel == false);
-                           }
+                            }
                             else
                                 _pv.ViewMessage("Det finns inga medlemmar att ta bort\n", ConsoleColor.Yellow, ConsoleColor.Black);
+
+                            // Avslutar om escape har trycks ned
+                            if (!_pv.ContinueOnKeyPressed(true))
+                                return;
+                            else
+                                continue;
+                            #endregion
+
+                        case 7:
+                            #region Lägg till båt
+
+                            if (_mc.MembersExist())
+                            {
+                                // Lista medlemmar
+                                _pv.MemberNameList(_mc.Members);
+                                bool cancel = false;
+
+                                do
+                                {
+                                    try
+                                    {
+                                        _pv.ViewMessage("Ange medlemsnr för registrering - 0 avbryter: ", ConsoleColor.Black, ConsoleColor.Gray);
+
+                                        int id = int.Parse(Console.ReadLine());
+
+                                        if (id == 0)
+                                        {
+                                            cancel = true;
+                                            break;
+                                        }
+
+                                        Member memberToAddBoat = _mc.GetMember(id);
+
+                                        // Om en användare finns med angivet id
+                                        if (memberToAddBoat != null)
+                                        {
+                                            // Visar befintliga båtar registrerade på medlemmen
+                                            _pv.ViewMember(memberToAddBoat);
+
+                                            // Skapa ny båt
+                                            Boat boatToCreate = CreateBoat();
+
+                                            if (boatToCreate != null)
+                                            {
+                                                memberToAddBoat.Boats.Add(boatToCreate);
+                                                SaveMember(memberToAddBoat, "Båten registrerades");
+                                                // Avbryter loopen
+                                                cancel = true;
+                                            }
+                                            else
+                                                _pv.ViewMessage("\n\nFEL! Båten kunde inte registreras\n\n", ConsoleColor.Red);
+                                        }
+                                        // Om ingen användare med id:t finns
+                                        else
+                                            _pv.ViewMessage("Det finns inga medlemmar att lägga till båtar på\n", ConsoleColor.Red);
+                                    }
+                                    catch (Exception)
+                                    {
+                                        _pv.ViewMessage("Du måste ange ett heltal\n", ConsoleColor.Red);
+                                    }
+                                }
+                                while (cancel == false);
+                            }
+                            else
+                                _pv.ViewMessage("Det finns inga medlemmar att visa\n", ConsoleColor.Yellow, ConsoleColor.Black);
+
+                            // Avslutar om escape har trycks ned
+                            if (!_pv.ContinueOnKeyPressed(true))
+                                return;
+                            else
+                                continue;
+                            #endregion
+
+                        case 8:
+                            #region Ändra båt
+
+                            if (_mc.MembersExist())
+                            {
+                                // Visa befintliga medlemmar
+                                _pv.MemberNameList(_mc.Members);
+
+                                bool cancel = false;
+
+                                do
+                                {
+                                    try
+                                    {
+                                        _pv.ViewMessage("Ange medlemsnr för ändring - 0 avbryter: ", ConsoleColor.Black, ConsoleColor.Gray);
+                                        int id = int.Parse(Console.ReadLine());
+
+                                        if (id == 0)
+                                        {
+                                            cancel = true;
+                                            break;
+                                        }
+
+                                        Member member = _mc.GetMember(id);
+
+                                        // Om en medlem finns med angivet id
+                                        if (member != null)
+                                        {
+                                            _pv.ViewHeader("Välj båt att ändra");
+
+                                            Boat boat = GetBoat(member);
+                                            if (boat != null)
+                                            {
+                                                EditBoat(member, boat);
+                                                SaveMember(member, "Båten ändrades");
+                                                // Avbryter loopen
+                                                cancel = true;
+                                            }
+                                        }
+                                        else
+                                            _pv.ViewMessage("Det fanns ingen medlem kopplad till medlemsnumret\n", ConsoleColor.Red);
+                                    }
+                                    catch (Exception)
+                                    {
+                                        _pv.ViewMessage("Du måste ange ett heltal\n", ConsoleColor.Red);
+                                    }
+                                }
+                                while (cancel == false);
+                            }
+                            else
+                                _pv.ViewMessage("Det finns inga medlemmar att ändra båtar för\n", ConsoleColor.Yellow, ConsoleColor.Black);
+
+                            // Avslutar om escape har trycks ned
+                            if (!_pv.ContinueOnKeyPressed(true))
+                                return;
+                            else
+                                continue;
+                            #endregion
+
+                        case 9:
+                            #region Ta bort båt
+
+                            if (_mc.MembersExist())
+                            {
+                                // Visa lista över medlemmar
+                                _pv.MemberNameList(_mc.Members);
+
+                                bool cancel = false;
+
+                                do
+                                {
+                                    try
+                                    {
+                                        _pv.ViewMessage("Ange medlemsnr för borttagning - 0 avbryter: ", ConsoleColor.Black, ConsoleColor.Gray);
+
+                                        int id = int.Parse(Console.ReadLine());
+
+                                        if (id == 0)
+                                        {
+                                            cancel = true;
+                                            break;
+                                        }
+
+                                        Member member = _mc.GetMember(id);
+
+                                        // Om medlem finns med angivet id
+                                        if (member != null)
+                                        {
+                                            if (member.Boats.Count() == 0)
+                                                _pv.ViewMessage("\nDet finns ingen båtar registrerade på medlemen\n\n", ConsoleColor.Red);
+
+                                            else
+                                            {
+                                                _pv.ViewHeader("Välj båt att ta bort");
+                                                DeleteBoat(member, GetBoat(member));
+                                                _mc.Save();
+                                                // Avbryter loopen
+                                                cancel = true;
+                                            }
+                                        }
+                                        else
+                                            _pv.ViewMessage("Det fanns ingen medlem kopplad till medlemsnumret\n", ConsoleColor.Red);
+                                    }
+                                    catch (Exception)
+                                    {
+                                        _pv.ViewMessage("Du måste ange ett heltal\n", ConsoleColor.Red);
+                                    }
+                                } while (cancel == false);
+                            }
+                            else
+                                _pv.ViewMessage("Det finns inga medlemmar att ta bort båtar för\n", ConsoleColor.Yellow, ConsoleColor.Black);
 
                             // Avslutar om escape har trycks ned
                             if (!_pv.ContinueOnKeyPressed(true))
@@ -267,12 +451,28 @@ namespace MemberApp.Controllers
             _pv.ViewMessage("\n" + message + "!\n\n", ConsoleColor.Green, ConsoleColor.Black);
         }
 
+        private Boat CreateBoat()
+        {
+            _pv.ViewHeader("Skapa ny båt");
+            string boatType = _pv.ReadBoatType();
+
+            if (boatType == null)
+                return null;
+
+            double length = _pv.ReadBoatLength();
+
+            string info = _pv.ReadBoatInfo();
+
+            Boat boat = new Boat(boatType, length, info);
+
+            return boat;
+        }
 
         private Member CreateMember()
         {
             _pv.ViewHeader("Skapa ny medlem");
             string name = _pv.ReadMemberName();
-            
+
             if (name == null)
                 return null;
 
@@ -282,10 +482,28 @@ namespace MemberApp.Controllers
                 return null;
 
             Member member = new Member(name, _mc.GetNextMemberId(), ssn);
-            
+
             return member;
         }
 
+        private void DeleteBoat(Member member, Boat boat)
+        {
+            _pv.ViewMessage("\nÄr du säker? [j=ja, övriga=nej]", ConsoleColor.Yellow, ConsoleColor.Black);
+
+            if (Console.ReadKey().Key == ConsoleKey.J)
+            {
+                try
+                {
+                    member.Boats.Remove(boat);
+                    _pv.ViewMessage("\n\nBåten togs bort\n", ConsoleColor.Green, ConsoleColor.Black);
+                }
+                catch (Exception)
+                {
+                    _pv.ViewMessage("\n\nBåten kunde inte tas bort\n", ConsoleColor.Red);
+                }
+            }
+            Console.WriteLine();
+        }
 
         private void DeleteMember(Member member)
         {
@@ -305,7 +523,21 @@ namespace MemberApp.Controllers
             }
             Console.WriteLine();
         }
-        
+
+        private void EditBoat(Member member, Boat boat)
+        {
+            _pv.ViewHeader("Ändra båt - Tom rad anger tidigare värde");
+
+            string type = _pv.ReadBoatType(boat.Type);
+            double length = _pv.ReadBoatLength(boat.Length);
+            string info = _pv.ReadBoatInfo(boat.Info);
+
+            // Ersätt befintlig båt med uppdaterad båt
+            int index = member.Boats.IndexOf(boat);
+            member.Boats[index] = new Boat(type, length, info);
+
+        }
+
         private void EditMember(Member member)
         {
             _pv.ViewHeader("Ändra medlem - Tom rad anger tidigare värde");
@@ -315,10 +547,34 @@ namespace MemberApp.Controllers
 
             // Ersätt befintlig medlem med uppdaterad medlem
             int index = _mc.Members.IndexOf(member);
-            _mc.Members[index] = new Member(name, member.Id, ssn);
+            _mc.Members[index] = new Member(name, member.Id, ssn, member.Boats);
             // Sortera användare
             _mc.Members.Sort();
         }
 
+        private Boat GetBoat(Member member)
+        {
+            _pv.ViewMemberBoats(member);
+
+            do
+            {
+                try
+                {
+                    _pv.ViewMessage(String.Format("Välj båt [1-{0}]", member.Boats.Count()), ConsoleColor.Black, ConsoleColor.Gray);
+                    int index = int.Parse(Console.ReadLine());
+
+                    if (index == 0)
+                        return null;
+
+                    // Index förskjuts då 0 avbryter.
+                    return member.Boats[index - 1];
+                }
+                catch
+                {
+                    _pv.ViewMessage("Du måste ange ett heltal inom givet intervall\n", ConsoleColor.Red);
+                }
+            }
+            while (true);
+        }
     }
 }

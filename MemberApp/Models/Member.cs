@@ -7,11 +7,12 @@ namespace MemberApp.Models
 {
     class Member : IComparable, IComparable<Member>
     {
-        public Member(string name, int id, string ssn)
+        public Member(string name, int id, string ssn, List<Boat> boats)
         {
             Name = name;
             Id = id;
             SSN = ssn;
+            Boats = boats;
         }
 
         public Member(string name, int id, string ssn)
@@ -19,6 +20,7 @@ namespace MemberApp.Models
             Name = name;
             Id = id;
             SSN = ssn;
+            Boats = new List<Boat>();
         }
 
         public Member(string name)
@@ -26,6 +28,7 @@ namespace MemberApp.Models
             Name = name;
             Id = new int();
             SSN = String.Empty;
+            Boats = new List<Boat>();
         }
 
         public string Name { get; set; }
@@ -33,6 +36,8 @@ namespace MemberApp.Models
         public int Id { get; set; }
 
         public string SSN { get; set; }
+
+        public List<Boat> Boats { get; set; }
 
         // Sortera lista över medlemmar
         public int CompareTo(object obj)

@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Models\Boat.cs" />
+    <Compile Include="Models\BoatType.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\MemberCatalog.cs" />
     <Compile Include="Models\ReadMemberStatus.cs" />
