@@ -10,3 +10,9 @@ Kevin Fredriksson
 1
 [SSN]
 1
+[BoatType]
+Segelbåt
+[BoatLength]
+10
+[BoatInfo]
+inget
